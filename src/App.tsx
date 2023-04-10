@@ -1,16 +1,19 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from './redux/store';
-import { toggle } from './redux/slices/viewModeSlice';
+import NavBar from './components/NavBar';
+import Content from './components/Content';
 
 export default function App() {
   const viewMode = useSelector((state: RootState) => state.viewMode.mode);
-  const dispatch = useDispatch();
 
   return (
     <div
       className='App'
       id={viewMode}>
-      <button onClick={() => dispatch(toggle())}>switch</button>
+      <div id='page-container'>
+        <NavBar />
+        <Content />
+      </div>
     </div>
   );
 }
