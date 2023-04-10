@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { api } from './slices/apiSlice';
 import counterReducer from './slices/counterSlice';
+import viewModeSlice from './slices/viewModeSlice';
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
+    viewMode: viewModeSlice,
     counter: counterReducer,
   },
   middleware: (getDefaultMiddleware) =>
