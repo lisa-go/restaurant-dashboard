@@ -1,0 +1,109 @@
+@import '../../variables.scss';
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  width: 250px;
+  padding: 1rem 0 2rem;
+
+  #tab-container {
+    flex: 1;
+  }
+
+  button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 2rem;
+    gap: 0.75rem;
+    background: none;
+    border: none;
+    border-left: 10px solid transparent;
+
+    &:hover {
+      span {
+        font-weight: bold;
+      }
+      transition: 1500ms;
+    }
+
+    span {
+      font-size: 1.25rem;
+    }
+  }
+
+  #logo {
+    padding: 0 1rem 0 10px;
+
+    &:hover {
+      filter: none;
+      background: none;
+      border-left: 10px solid transparent;
+    }
+    img {
+      width: 50px;
+    }
+    span {
+      font-size: 1.45rem;
+      font-weight: bold;
+    }
+  }
+
+  #switch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+
+    .switch-icon {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+#light header {
+  button {
+    svg {
+      color: $off-black;
+    }
+    span {
+      color: $off-black;
+    }
+  }
+
+  #tab-container button:hover {
+    box-shadow: inset 400px 0 0 0 rgba(0, 0, 0, 0.075);
+    border-left: 10px solid $navy;
+  }
+
+  #switch-container span {
+    color: $off-black;
+  }
+}
+
+#dark header {
+  button {
+    svg {
+      color: $off-white;
+    }
+    span {
+      color: $off-white;
+    }
+  }
+
+  #tab-container button:hover {
+    box-shadow: inset 400px 0 0 0 rgba(255, 255, 255, 0.075);
+    border-left: 10px solid $off-white;
+  }
+
+  #switch-container span {
+    color: $off-white;
+  }
+}

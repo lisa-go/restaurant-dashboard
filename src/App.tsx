@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/store';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import Content from './components/Content';
 
 export default function App() {

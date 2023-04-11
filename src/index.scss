@@ -23,11 +23,12 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 3rem;
+  padding: 3rem 5rem;
 
   #page-container {
     border-radius: 18px;
     backdrop-filter: blur(10px);
+    display: flex;
   }
 }
 

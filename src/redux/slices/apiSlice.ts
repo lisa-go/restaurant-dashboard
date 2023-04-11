@@ -19,20 +19,60 @@ interface Transaction {
 
 type TransactionResponse = Transaction[];
 
+interface Food {
+  _id: string;
+  name: string;
+  native_name: string;
+  description: string;
+  type: string;
+  sub_cat: string;
+  price: number;
+  rating: number;
+  img: string;
+  __v: number;
+}
+
+type FoodResponse = Food[];
+
+interface Drink {
+  _id: string;
+  name: string;
+  price: number;
+  rating: number;
+  img: string;
+  __v: number;
+}
+
+type DrinkResponse = Drink[];
+
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl:
       'https://cors-anywhere.herokuapp.com/https://puce-beautiful-beaver.cyclic.app/restaurant/',
   }),
-  tagTypes: ['Transactions'],
+  tagTypes: ['Transactions', 'Menu/foods', 'Menu/drinks'],
   endpoints: (build) => ({
     getTransactions: build.query<TransactionResponse, void>({
       query: () => 'transactions',
       providesTags: (result) =>
         result ? result.map(({ _id }) => ({ type: 'Transactions', _id })) : [],
     }),
+    getMenuFoods: build.query<FoodResponse, void>({
+      query: () => 'menu/foods',
+      providesTags: (result) =>
+        result ? result.map(({ _id }) => ({ type: 'Menu/foods', _id })) : [],
+    }),
+    getMenuDrinks: build.query<DrinkResponse, void>({
+      query: () => 'menu/drinks',
+      providesTags: (result) =>
+        result ? result.map(({ _id }) => ({ type: 'Menu/drinks', _id })) : [],
+    }),
   }),
 });
 
-export const { useGetTransactionsQuery } = api;
+export const {
+  useGetTransactionsQuery,
+  useGetMenuFoodsQuery,
+  useGetMenuDrinksQuery,
+} = api;
