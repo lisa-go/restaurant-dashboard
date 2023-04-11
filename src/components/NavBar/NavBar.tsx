@@ -35,8 +35,10 @@ export default function NavBar() {
         <Switch
           onChange={handleChange}
           checked={checked}
-          offColor='#615a54'
-          onColor='#615a54'
+          offColor='#83746E'
+          onColor='#83746E'
+          offHandleColor='#f5f5f5'
+          onHandleColor='#f5f5f5'
           uncheckedIcon={
             <div className='switch-icon'>
               <MdOutlineDarkMode style={{ color: '#cfc9c1' }} />
