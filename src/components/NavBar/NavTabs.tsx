@@ -20,15 +20,15 @@ export default function NavTabs() {
         <TbUrgent size={defaultSize} />
         <span>Current Orders</span>
       </button>
-      <button onClick={() => dispatch(change('Current Orders'))}>
+      <button onClick={() => dispatch(change('Past Orders'))}>
         <TbHistory size={defaultSize} />
         <span>Past Orders</span>
       </button>
-      <button onClick={() => dispatch(change('Current Orders'))}>
+      <button onClick={() => dispatch(change('Statistics'))}>
         <GoGraph size={defaultSize} />
         <span>Statistics</span>
       </button>
-      <button onClick={() => dispatch(change('Current Orders'))}>
+      <button onClick={() => dispatch(change('Menu'))}>
         <MdOutlineMenuBook size={defaultSize} />
         <span>Menu</span>
       </button>
