@@ -33,6 +33,10 @@ body,
   }
 }
 
+main {
+  flex: 1;
+}
+
 #light {
   background: url(./assets/pexels-miguel-á-padriñán-255377.jpg);
   background-size: cover;
@@ -48,5 +52,11 @@ body,
 
   #page-container {
     background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  #page-container {
+    flex-direction: column-reverse;
   }
 }

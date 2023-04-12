@@ -1,0 +1,70 @@
+@import '../../variables.scss';
+
+#p-header {
+  display: none;
+  justify-content: space-between;
+  width: calc(100% - 2rem);
+  margin: 6px 1rem;
+
+  #logo {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: none;
+    border: none;
+
+    img {
+      width: 50px;
+    }
+
+    span {
+      font-size: 1.45rem;
+      font-weight: bold;
+    }
+  }
+
+  #switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+
+    .switch-icon {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+#light #p-header {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+
+  span {
+    color: $off-black;
+  }
+
+  #switch-container span {
+    color: $off-black;
+  }
+}
+
+#dark #p-header {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+
+  span {
+    color: $off-white;
+  }
+
+  #switch-container span {
+    color: $off-white;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  #p-header {
+    display: flex;
+  }
+}

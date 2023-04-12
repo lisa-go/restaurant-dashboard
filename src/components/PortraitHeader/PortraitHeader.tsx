@@ -1,15 +1,14 @@
-import './NavBar.scss';
+import './PortraitHeader.scss';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggle } from '../../redux/slices/viewModeSlice';
 import logo from '../../assets/icons8-asian-hat-100.png';
-import NavTabs from './NavTabs';
 import { change } from '../../redux/slices/pageSlice';
 import Switch from 'react-switch';
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 import { RootState } from '../../redux/store';
 
-export default function NavBar() {
+export default function PortraitHeader() {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState<boolean>(false);
   const handleChange = () => {
@@ -19,7 +18,7 @@ export default function NavBar() {
   const viewMode = useSelector((state: RootState) => state.viewMode.mode);
 
   return (
-    <header>
+    <div id='p-header'>
       <button
         id='logo'
         onClick={() => dispatch(change('Overview'))}>
@@ -29,7 +28,6 @@ export default function NavBar() {
         />
         <span>Rice Paddy Hat</span>
       </button>
-      <NavTabs />
 
       <div id='switch-container'>
         <Switch
@@ -74,6 +72,6 @@ export default function NavBar() {
         />
         <span>{viewMode} mode</span>
       </div>
-    </header>
+    </div>
   );
 }
