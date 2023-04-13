@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { api } from './slices/apiSlice';
 import viewModeSlice from './slices/viewModeSlice';
 import pageSlice from './slices/pageSlice';
+import dataSlice from './slices/dataSlice';
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
+    data: dataSlice,
     viewMode: viewModeSlice,
     page: pageSlice,
   },

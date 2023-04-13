@@ -17,7 +17,7 @@ interface Transaction {
   __v: number;
 }
 
-type TransactionResponse = Transaction[];
+export type TransactionResponse = Transaction[];
 
 interface Food {
   _id: string;
@@ -32,7 +32,7 @@ interface Food {
   __v: number;
 }
 
-type FoodResponse = Food[];
+export type FoodResponse = Food[];
 
 interface Drink {
   _id: string;
@@ -43,13 +43,12 @@ interface Drink {
   __v: number;
 }
 
-type DrinkResponse = Drink[];
+export type DrinkResponse = Drink[];
 
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl:
-      'https://cors-anywhere.herokuapp.com/https://puce-beautiful-beaver.cyclic.app/restaurant/',
+    baseUrl: 'https://puce-beautiful-beaver.cyclic.app/restaurant/',
   }),
   tagTypes: ['Transactions', 'Menu/foods', 'Menu/drinks'],
   endpoints: (build) => ({
