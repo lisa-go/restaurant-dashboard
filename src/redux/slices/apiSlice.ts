@@ -7,7 +7,7 @@ interface Order {
   _id: string;
 }
 
-interface Transaction {
+export interface Transaction {
   _id: string;
   customerName: string;
   totalQty: number;

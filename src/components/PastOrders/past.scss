@@ -1,0 +1,55 @@
+@import '../../variables.scss';
+
+#past-container {
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .card {
+      border-radius: 6px;
+      padding: 5px;
+      margin: 0 5px;
+      box-shadow: 4px 5px 6px rgba(0, 0, 0, 0.5);
+      height: 10%;
+      transition: height 2000ms ease-in;
+
+      &:hover {
+        height: 100%;
+
+        .additional {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        svg {
+          cursor: pointer;
+        }
+      }
+
+      .additional {
+        visibility: hidden;
+        opacity: 0;
+        transition: 1500ms;
+      }
+    }
+  }
+}
+
+#light {
+  #past-container .content-container .card {
+    border: 1px dotted $off-black;
+  }
+}
+
+#dark {
+  #past-container .content-container .card {
+    border: 1px dotted $off-white;
+  }
+}

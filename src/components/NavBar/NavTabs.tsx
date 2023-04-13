@@ -16,9 +16,9 @@ export default function NavTabs() {
         <RiNumbersLine size={defaultSize} />
         <span>Overview</span>
       </button>
-      <button onClick={() => dispatch(change('Current Orders'))}>
+      <button onClick={() => dispatch(change("Today's Orders"))}>
         <TbUrgent size={defaultSize} />
-        <span>Current Orders</span>
+        <span>Today's Orders</span>
       </button>
       <button onClick={() => dispatch(change('Past Orders'))}>
         <TbHistory size={defaultSize} />
