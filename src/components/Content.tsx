@@ -39,10 +39,10 @@ export default function Content() {
     }
   }, [transactionData, foodData, drinkData]);
 
-  useEffect(() => {
+  /*  useEffect(() => {
     const interval = setInterval(() => refetch(), 300000);
     return () => clearInterval(interval);
-  }, []);
+  }, []); */
 
   return (
     <main>

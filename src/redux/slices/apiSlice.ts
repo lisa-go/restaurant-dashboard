@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-interface Order {
+export interface Order {
   name: string;
   qty: number;
   price: number;

@@ -3,6 +3,7 @@ import { MdMoreHoriz } from 'react-icons/md';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import PastCardItem from './PastCardItem';
 
 interface Props {
   card: Transaction;
@@ -30,18 +31,14 @@ export default function PastCard({ card }: Props) {
       </div>
 
       <div className='additional'>
-        <div className='row'>
-          <span>testing</span>
-          <span>testing</span>
-          <span>testing</span>
-          <span>testing</span>
-        </div>
-        <div className='row'>
-          <span>testing</span>
-          <span>testing</span>
-          <span>testing</span>
-          <span>testing</span>
-        </div>
+        {card.order.map((item) => {
+          return (
+            <PastCardItem
+              key={item._id}
+              item={item}
+            />
+          );
+        })}
       </div>
     </div>
   );

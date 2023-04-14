@@ -3,9 +3,14 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import PastCard from './PastCard';
 import loadingGif from '../../assets/tail-spin.svg';
+import moment from 'moment';
 
 export default function Past() {
-  const data = useSelector((state: RootState) => state.data.tData);
+  const data = useSelector((state: RootState) => state.data.tData)?.filter(
+    (element) =>
+      moment(element.orderDate).format('MMDDYYYY') !==
+      moment(new Date()).format('MMDDYYYY')
+  );
 
   return (
     <div id='past-container'>
