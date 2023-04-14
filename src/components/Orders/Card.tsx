@@ -3,13 +3,13 @@ import { MdMoreHoriz } from 'react-icons/md';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import PastCardItem from './PastCardItem';
+import CardItem from './CardItem';
 
 interface Props {
   card: Transaction;
 }
 
-export default function PastCard({ card }: Props) {
+export default function Card({ card }: Props) {
   const viewMode = useSelector((state: RootState) => state.viewMode.mode);
 
   return (
@@ -33,7 +33,7 @@ export default function PastCard({ card }: Props) {
       <div className='additional'>
         {card.order.map((item) => {
           return (
-            <PastCardItem
+            <CardItem
               key={item._id}
               item={item}
             />

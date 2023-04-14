@@ -19,7 +19,7 @@ export interface Transaction {
 
 export type TransactionResponse = Transaction[];
 
-interface Food {
+export interface Food {
   _id: string;
   name: string;
   native_name: string;
@@ -34,7 +34,7 @@ interface Food {
 
 export type FoodResponse = Food[];
 
-interface Drink {
+export interface Drink {
   _id: string;
   name: string;
   price: number;

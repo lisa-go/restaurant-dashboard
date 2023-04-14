@@ -101,3 +101,9 @@ body,
     flex-direction: column-reverse;
   }
 }
+
+@media only screen and (max-width: 420px) {
+  .App {
+    padding: 1rem;
+  }
+}

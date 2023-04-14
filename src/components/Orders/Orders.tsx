@@ -1,26 +1,35 @@
-import './past.scss';
+import './orders.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import PastCard from './PastCard';
+import Card from './Card';
 import loadingGif from '../../assets/tail-spin.svg';
 import moment from 'moment';
 
-export default function Past() {
+interface Props {
+  mode: string;
+}
+
+export default function Orders({ mode }: Props) {
   const data = useSelector((state: RootState) => state.data.tData)?.filter(
     (element) =>
-      moment(element.orderDate).format('MMDDYYYY') !==
-      moment(new Date()).format('MMDDYYYY')
+      mode === 'past'
+        ? moment(element.orderDate).format('MMDDYYYY') !==
+          moment(new Date()).format('MMDDYYYY')
+        : moment(element.orderDate).format('MMDDYYYY') ===
+          moment(new Date()).format('MMDDYYYY')
   );
 
   return (
-    <div id='past-container'>
-      <div className='header'>Past Orders</div>
+    <div id='orders-container'>
+      <div className='header'>
+        {mode === 'past' ? 'Past' : "Today's"} Orders
+      </div>
       <div className='content-container'>
         {data ? (
           data
             .map((card) => {
               return (
-                <PastCard
+                <Card
                   key={card._id}
                   card={card}
                 />

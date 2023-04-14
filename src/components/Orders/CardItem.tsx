@@ -8,7 +8,7 @@ interface Props {
   item: Order;
 }
 
-export default function PastCardItem({ item }: Props) {
+export default function CardItem({ item }: Props) {
   const [image, setImage] = useState<string>('');
   const foodItem = useSelector((state: RootState) => state.data.fData)?.filter(
     (element) => element.name === item.name

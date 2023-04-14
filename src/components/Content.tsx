@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import Overview from './Overview/Overview';
-import Past from './PastOrders/Past';
 import Statistics from './Statistics/Statistics';
 import Menu from './Menu/Menu';
 import {
@@ -15,7 +14,7 @@ import {
   updateFoods,
   updateTransactions,
 } from '../redux/slices/dataSlice';
-import Today from './TodaysOrders/Today';
+import Orders from './Orders/Orders';
 
 export default function Content() {
   const page = useSelector((state: RootState) => state.page.current);
@@ -31,27 +30,27 @@ export default function Content() {
     if (transactionData && transactionData !== data.tData) {
       dispatch(updateTransactions(transactionData));
     }
-    if (foodData && foodData !== data.fData) {
+    if (foodData) {
       dispatch(updateFoods(foodData));
     }
-    if (drinkData && drinkData !== data.dData) {
+    if (drinkData) {
       dispatch(updateDrinks(drinkData));
     }
   }, [transactionData, foodData, drinkData]);
 
-  /*  useEffect(() => {
-    const interval = setInterval(() => refetch(), 300000);
+  useEffect(() => {
+    const interval = setInterval(() => refetch(), 150000);
     return () => clearInterval(interval);
-  }, []); */
+  }, []);
 
   return (
     <main>
       {page === 'Overview' ? (
         <Overview />
       ) : page === "Today's Orders" ? (
-        <Today />
+        <Orders mode={'today'} />
       ) : page === 'Past Orders' ? (
-        <Past />
+        <Orders mode={'past'} />
       ) : page === 'Statistics' ? (
         <Statistics />
       ) : page === 'Menu' ? (
