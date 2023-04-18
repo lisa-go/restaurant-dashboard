@@ -10,6 +10,15 @@
   color: inherit;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $brown;
+  border-radius: 10px;
+}
+
 html,
 body,
 #root,
@@ -64,6 +73,10 @@ body,
   background: url(./assets/pexels-miguel-á-padriñán-255377.jpg);
   background-size: cover;
 
+  ::-webkit-scrollbar-thumb:hover {
+    background: $off-black;
+  }
+
   #page-container {
     background-color: rgba(255, 255, 255, 0.3);
 
@@ -81,6 +94,10 @@ body,
 #dark {
   background: url(./assets/pexels-pixabay-220118.jpg);
   background-size: cover;
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $off-white;
+  }
 
   #page-container {
     background-color: rgba(0, 0, 0, 0.3);

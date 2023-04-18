@@ -30,6 +30,24 @@ export default function Menu() {
             />
           )}
         </div>
+        <h1>Drinks</h1>
+        <div className='card-container'>
+          {drinks ? (
+            drinks.map((drink) => {
+              return (
+                <Card
+                  key={drink._id}
+                  item={drink}
+                />
+              );
+            })
+          ) : (
+            <img
+              src={loadingGif}
+              alt='loading'
+            />
+          )}
+        </div>
       </div>
     </div>
   );

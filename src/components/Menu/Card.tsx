@@ -53,16 +53,14 @@ export default function Card({ item }: Props) {
 
       <div className='pr-container'>
         <span>${item.price}</span>
-        {foodItem?.rating ? (
-          <span>
-            <p>{foodItem.rating}</p>
-            <TiStarFullOutline
-              color='#feff51'
-              stroke='#1f232c'
-              strokeWidth='1'
-            />
-          </span>
-        ) : null}
+        <span>
+          <p>{foodItem?.rating ? foodItem.rating : drinkItem?.rating}</p>
+          <TiStarFullOutline
+            color='#feff51'
+            stroke='#1f232c'
+            strokeWidth='1'
+          />
+        </span>
       </div>
 
       {foodItem?.description ? <p>{foodItem.description}</p> : null}

@@ -4,6 +4,10 @@
   .content-container {
     h1 {
       text-align: center;
+
+      &:last-of-type {
+        margin-top: 2rem;
+      }
     }
 
     .card-container {
