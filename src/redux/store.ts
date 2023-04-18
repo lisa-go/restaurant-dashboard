@@ -3,6 +3,7 @@ import { api } from './slices/apiSlice';
 import viewModeSlice from './slices/viewModeSlice';
 import pageSlice from './slices/pageSlice';
 import dataSlice from './slices/dataSlice';
+import pageNumberSlice from './slices/pageNumberSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     data: dataSlice,
     viewMode: viewModeSlice,
     page: pageSlice,
+    pageNumber: pageNumberSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

@@ -43,6 +43,11 @@ export default function Content() {
     return () => clearInterval(interval);
   }, []);
 
+  /* temporary console log */
+  useEffect(() => {
+    console.log(transactionData);
+  }, [transactionData]);
+
   return (
     <main>
       {page === 'Overview' ? (
