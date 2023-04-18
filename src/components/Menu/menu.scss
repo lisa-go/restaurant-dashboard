@@ -20,12 +20,39 @@
         padding: 1rem;
         display: flex;
         flex-direction: column;
+        flex: 1;
 
         img {
           width: 200px;
           height: 200px;
+          border-radius: 3px;
           object-fit: cover;
           align-self: center;
+        }
+
+        > div {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          span:last-of-type {
+            margin-left: 8px;
+          }
+        }
+
+        .name-container span:last-of-type {
+          font-style: italic;
+          font-size: 0.95rem;
+        }
+
+        .pr-container span:last-of-type {
+          display: flex;
+          gap: 1px;
+        }
+
+        > p {
+          font-style: italic;
+          text-align: justify;
         }
       }
     }
