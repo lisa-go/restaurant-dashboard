@@ -17,6 +17,7 @@
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "react-switch": "^7.0.0",
+    "recharts": "^2.5.0",
     "sass": "^1.60.0"
   },
   "devDependencies": {
