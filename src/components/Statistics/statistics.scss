@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+#statistics-container {
+  .content-container {
+    .graph-container {
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+
+      h1 {
+        font-size: 1.25rem;
+      }
+    }
+
+    hr {
+      margin: 3rem 0;
+    }
+  }
+}

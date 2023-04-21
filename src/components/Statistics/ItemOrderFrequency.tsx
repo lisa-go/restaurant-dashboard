@@ -11,6 +11,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  Label,
+  LabelList,
 } from 'recharts';
 
 interface DataPoint {
@@ -52,6 +54,9 @@ export default function ItemOrderFrequency() {
     }
   }, [data]);
 
+  const darkColors = ['#08203e', '#27143f', '#11473c', '#710c30'];
+  const lightColors = ['#caefd7', '#f5bfd7', '#abc9e9', '#be98d3'];
+
   return (
     <ResponsiveContainer
       width='100%'
@@ -78,10 +83,25 @@ export default function ItemOrderFrequency() {
         />
         <Tooltip wrapperStyle={{ color: '#83746e' }} />
         <Legend />
-        <Bar
-          dataKey='value'
-          fill='#83746e'
-        />
+        <Bar dataKey='value'>
+          {data.map((entry, index) => (
+            <Cell
+              key={`cell-${index}`}
+              fill={
+                viewMode === 'light'
+                  ? lightColors[index % 4]
+                  : darkColors[index % 4]
+              }
+              strokeWidth={index === 2 ? 4 : 1}
+            />
+          ))}
+          <LabelList
+            dataKey='name'
+            position='insideRight'
+            fill={viewMode === 'light' ? '#1f232c' : '#f5f5f5'}
+            offset={10}
+          />
+        </Bar>
       </BarChart>
     </ResponsiveContainer>
   );
