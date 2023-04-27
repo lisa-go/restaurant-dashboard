@@ -4,6 +4,7 @@ import viewModeSlice from './slices/viewModeSlice';
 import pageSlice from './slices/pageSlice';
 import dataSlice from './slices/dataSlice';
 import pageNumberSlice from './slices/pageNumberSlice';
+import statSlice from './slices/statSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     viewMode: viewModeSlice,
     page: pageSlice,
     pageNumber: pageNumberSlice,
+    stat: statSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

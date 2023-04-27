@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useEffect, useState } from 'react';
 import {
@@ -14,16 +14,14 @@ import {
   Label,
   LabelList,
 } from 'recharts';
-
-interface DataPoint {
-  name: string;
-  value: number;
-}
+import { DataPoint, updateIOF } from '../../redux/slices/statSlice';
 
 export default function ItemOrderFrequency() {
   const viewMode = useSelector((state: RootState) => state.viewMode.mode);
   const { tData, fData, dData } = useSelector((state: RootState) => state.data);
-  const [data, setData] = useState<DataPoint[]>([]);
+
+  const data = useSelector((state: RootState) => state.stat.IOF);
+  const dispatch = useDispatch();
 
   /* populate data state with all items */
   useEffect(() => {
@@ -33,26 +31,18 @@ export default function ItemOrderFrequency() {
         list.push({ name: item.name, value: 0 });
       });
     }
-    setData(list);
-  }, [dData, fData]);
 
-  useEffect(() => {
-    if (tData && data.length >= 1) {
-      tData.forEach((trans) => {
-        trans.order.forEach((item) => {
-          let temp = data;
-          let tempItem = temp.filter(
-            (element) => element.name === item.name
-          )[0];
-          tempItem.value += item.qty;
-          temp.sort((a, b) => {
-            return a.value - b.value;
-          });
-          setData(temp);
+    tData?.forEach((trans) => {
+      trans.order.forEach((item) => {
+        let tempItem = list.filter((element) => element.name === item.name)[0];
+        tempItem.value += item.qty;
+        list.sort((a, b) => {
+          return a.value - b.value;
         });
       });
-    }
-  }, [data]);
+    });
+    dispatch(updateIOF(list));
+  }, [dData, fData]);
 
   const darkColors = ['#08203e', '#27143f', '#11473c', '#710c30'];
   const lightColors = ['#caefd7', '#f5bfd7', '#abc9e9', '#be98d3'];
@@ -84,17 +74,18 @@ export default function ItemOrderFrequency() {
         <Tooltip wrapperStyle={{ color: '#83746e' }} />
         <Legend />
         <Bar dataKey='value'>
-          {data.map((entry, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={
-                viewMode === 'light'
-                  ? lightColors[index % 4]
-                  : darkColors[index % 4]
-              }
-              strokeWidth={index === 2 ? 4 : 1}
-            />
-          ))}
+          {data &&
+            data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={
+                  viewMode === 'light'
+                    ? lightColors[index % 4]
+                    : darkColors[index % 4]
+                }
+                strokeWidth={index === 2 ? 4 : 1}
+              />
+            ))}
           <LabelList
             dataKey='name'
             position='insideRight'

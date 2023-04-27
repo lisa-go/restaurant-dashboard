@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
 import { DrinkResponse, FoodResponse, TransactionResponse } from './apiSlice';
 
 interface DataState {
@@ -34,8 +32,5 @@ export const dataSlice = createSlice({
 
 export const { updateDrinks, updateFoods, updateTransactions } =
   dataSlice.actions;
-
-// Other code such as selectors can use the imported `RootState` type
-export const selectData = (state: RootState) => state.data;
 
 export default dataSlice.reducer;

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
 
 interface PageNumberState {
   current: number;
@@ -26,7 +25,5 @@ export const pageNumberSlice = createSlice({
 });
 
 export const { reset, increment, decrement } = pageNumberSlice.actions;
-
-export const selectPageNumber = (state: RootState) => state.pageNumber.current;
 
 export default pageNumberSlice.reducer;

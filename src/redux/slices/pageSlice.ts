@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
 
 interface PageState {
   current: string;
@@ -21,7 +20,5 @@ export const pageSlice = createSlice({
 });
 
 export const { change } = pageSlice.actions;
-
-export const selectPage = (state: RootState) => state.page.current;
 
 export default pageSlice.reducer;

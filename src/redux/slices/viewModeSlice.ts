@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
 
 interface ViewModeState {
   mode: string;
@@ -20,8 +19,5 @@ export const viewModeSlice = createSlice({
 });
 
 export const { toggle } = viewModeSlice.actions;
-
-// Other code such as selectors can use the imported `RootState` type
-export const selectViewMode = (state: RootState) => state.viewMode.mode;
 
 export default viewModeSlice.reducer;
