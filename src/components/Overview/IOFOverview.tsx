@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useEffect, useState } from 'react';
 import { DataPoint } from '../../redux/slices/statSlice';
+import { OverviewData } from './Overview';
 
 interface Categories {
   entree: string[];
@@ -27,20 +28,59 @@ export default function IOFOverview() {
       const drinks = dData.map((element) => element.name);
       setCategories({ entree: entrees, appetizer: appetizers, drink: drinks });
     }
+  }, [fData, dData]);
 
-    if (iofData) {
-      let test = iofData.slice(0).reduce((previous: DataPoint[], current) => {
-        if (categories?.appetizer.includes(current.name))
-          previous.push(current);
+  /* populate overview card data */
+  const [cardData, setCardData] = useState<OverviewData[]>();
+  useEffect(() => {
+    if (categories && iofData) {
+      const appetizers = iofData.reduce((previous: DataPoint[], current) => {
+        if (categories.appetizer.includes(current.name)) previous.push(current);
         return previous;
       }, []);
-      console.log(test);
+      const entrees = iofData.reduce((previous: DataPoint[], current) => {
+        if (categories.entree.includes(current.name)) previous.push(current);
+        return previous;
+      }, []);
+      const drinks = iofData.reduce((previous: DataPoint[], current) => {
+        if (categories.drink.includes(current.name)) previous.push(current);
+        return previous;
+      }, []);
+
+      setCardData([
+        {
+          description: 'Most Popular Appetizer',
+          ...appetizers[appetizers.length - 1],
+        },
+        { description: 'Least Popular Appetizer', ...appetizers[0] },
+        {
+          description: 'Most Popular Entree',
+          ...entrees[entrees.length - 1],
+        },
+        { description: 'Least Popular Entree', ...entrees[0] },
+        {
+          description: 'Most Popular Drink',
+          ...drinks[drinks.length - 1],
+        },
+        { description: 'Least Popular Drink', ...drinks[0] },
+      ]);
     }
-  }, [fData, dData, iofData]);
+  }, [categories, iofData]);
 
   return (
     <div id='iof-container'>
-      <div className='card'>fdgfd</div>
+      {cardData &&
+        cardData.map((card) => {
+          return (
+            <div
+              className='card-container'
+              key={card.description}>
+              <span>{card.description}</span>
+              <span>{card.name}</span>
+              <span>@ {card.value} sold</span>
+            </div>
+          );
+        })}
     </div>
   );
 }

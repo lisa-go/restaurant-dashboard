@@ -1,6 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { useEffect, useState } from 'react';
 import {
   BarChart,
   Bar,
@@ -9,40 +8,22 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
-  Label,
   LabelList,
 } from 'recharts';
-import { DataPoint, updateIOF } from '../../redux/slices/statSlice';
+import { DataPoint } from '../../redux/slices/statSlice';
+import { useEffect, useState } from 'react';
 
 export default function ItemOrderFrequency() {
   const viewMode = useSelector((state: RootState) => state.viewMode.mode);
-  const { tData, fData, dData } = useSelector((state: RootState) => state.data);
 
-  const data = useSelector((state: RootState) => state.stat.IOF);
-  const dispatch = useDispatch();
+  const iofData = useSelector((state: RootState) => state.stat.IOF);
 
-  /* populate data state with all items */
+  const [data, setData] = useState<DataPoint[]>();
+
   useEffect(() => {
-    let list: DataPoint[] = [];
-    if (dData && fData) {
-      dData.concat(fData).forEach((item) => {
-        list.push({ name: item.name, value: 0 });
-      });
-    }
-
-    tData?.forEach((trans) => {
-      trans.order.forEach((item) => {
-        let tempItem = list.filter((element) => element.name === item.name)[0];
-        tempItem.value += item.qty;
-        list.sort((a, b) => {
-          return a.value - b.value;
-        });
-      });
-    });
-    dispatch(updateIOF(list));
-  }, [dData, fData]);
+    setData(iofData);
+  }, [iofData]);
 
   const darkColors = ['#08203e', '#27143f', '#11473c', '#710c30'];
   const lightColors = ['#caefd7', '#f5bfd7', '#abc9e9', '#be98d3'];
@@ -72,7 +53,7 @@ export default function ItemOrderFrequency() {
           hide
         />
         <Tooltip wrapperStyle={{ color: '#83746e' }} />
-        <Legend />
+
         <Bar dataKey='value'>
           {data &&
             data.map((entry, index) => (

@@ -15,6 +15,7 @@ import {
   updateTransactions,
 } from '../redux/slices/dataSlice';
 import Orders from './Orders/Orders';
+import { DataPoint, updateIOF } from '../redux/slices/statSlice';
 
 export default function Content() {
   const page = useSelector((state: RootState) => state.page.current);
@@ -42,6 +43,30 @@ export default function Content() {
     const interval = setInterval(() => refetch(), 150000);
     return () => clearInterval(interval);
   }, []);
+
+  /* data statistics */
+  const { tData, fData, dData } = useSelector((state: RootState) => state.data);
+
+  /* populate IOF data with all items */
+  useEffect(() => {
+    let list: DataPoint[] = [];
+    if (dData && fData) {
+      dData.concat(fData).forEach((item) => {
+        list.push({ name: item.name, value: 0 });
+      });
+    }
+
+    tData?.forEach((trans) => {
+      trans.order.forEach((item) => {
+        let tempItem = list.filter((element) => element.name === item.name)[0];
+        tempItem.value += item.qty;
+        list.sort((a, b) => {
+          return a.value - b.value;
+        });
+      });
+    });
+    dispatch(updateIOF(list));
+  }, [dData, fData, tData]);
 
   /* temporary console log */
   useEffect(() => {
