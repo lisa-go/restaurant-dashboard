@@ -25,7 +25,6 @@
           text-align: start;
           font-size: 1.1rem;
           font-weight: bold;
-          text-decoration: 1px wavy underline $brown;
         }
         span:nth-of-type(2) {
           font-size: 1.25rem;
@@ -41,15 +40,31 @@
   }
   .card-container:nth-of-type(4n + 0) {
     border-color: $lt-blue;
+
+    span:first-of-type {
+      color: $dk-blue;
+    }
   }
   .card-container:nth-of-type(4n + 1) {
     border-color: $lt-green;
+
+    span:first-of-type {
+      color: $dk-green;
+    }
   }
   .card-container:nth-of-type(4n + 2) {
     border-color: $lt-pink;
+
+    span:first-of-type {
+      color: $dk-pink;
+    }
   }
   .card-container:nth-of-type(4n + 3) {
     border-color: $lt-purple;
+
+    span:first-of-type {
+      color: $dk-purple;
+    }
   }
 }
 
@@ -59,14 +74,30 @@
   }
   .card-container:nth-of-type(4n + 0) {
     border-color: $dk-blue;
+
+    span:first-of-type {
+      color: $lt-blue;
+    }
   }
   .card-container:nth-of-type(4n + 1) {
     border-color: $dk-green;
+
+    span:first-of-type {
+      color: $lt-green;
+    }
   }
   .card-container:nth-of-type(4n + 2) {
     border-color: $dk-purple;
+
+    span:first-of-type {
+      color: $lt-purple;
+    }
   }
   .card-container:nth-of-type(4n + 3) {
     border-color: $dk-pink;
+
+    span:first-of-type {
+      color: $lt-pink;
+    }
   }
 }
