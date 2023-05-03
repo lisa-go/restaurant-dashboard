@@ -2,10 +2,12 @@
 
 #overview-container {
   .content-container {
-    #iof-container {
+    #iof-container,
+    #opdw-container {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+      margin-bottom: 1rem;
       justify-content: space-evenly;
 
       .card-container {
@@ -35,70 +37,112 @@
   }
 }
 
-#light #overview-container .content-container #iof-container {
-  .card-container {
+#light #overview-container .content-container {
+  #iof-container .card-container,
+  #opdw-container .card-container {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  .card-container:nth-of-type(4n + 0) {
-    border-color: $lt-blue;
 
-    span:first-of-type {
-      color: $dk-blue;
+  #iof-container {
+    .card-container:nth-of-type(4n + 0) {
+      border-color: $lt-blue;
+
+      span:first-of-type {
+        color: $dk-blue;
+      }
+    }
+    .card-container:nth-of-type(4n + 1) {
+      border-color: $lt-green;
+
+      span:first-of-type {
+        color: $dk-green;
+      }
+    }
+    .card-container:nth-of-type(4n + 2) {
+      border-color: $lt-pink;
+
+      span:first-of-type {
+        color: $dk-pink;
+      }
+    }
+    .card-container:nth-of-type(4n + 3) {
+      border-color: $lt-purple;
+
+      span:first-of-type {
+        color: $dk-purple;
+      }
     }
   }
-  .card-container:nth-of-type(4n + 1) {
-    border-color: $lt-green;
 
-    span:first-of-type {
-      color: $dk-green;
+  #opdw-container {
+    .card-container:first-of-type {
+      border-color: $lt-purple;
+
+      span:first-of-type {
+        color: $dk-purple;
+      }
     }
-  }
-  .card-container:nth-of-type(4n + 2) {
-    border-color: $lt-pink;
+    .card-container:last-of-type {
+      border-color: $lt-blue;
 
-    span:first-of-type {
-      color: $dk-pink;
-    }
-  }
-  .card-container:nth-of-type(4n + 3) {
-    border-color: $lt-purple;
-
-    span:first-of-type {
-      color: $dk-purple;
+      span:first-of-type {
+        color: $dk-blue;
+      }
     }
   }
 }
 
-#dark #overview-container .content-container #iof-container {
-  .card-container {
+#dark #overview-container .content-container {
+  #iof-container .card-container,
+  #opdw-container .card-container {
     background-color: rgba(255, 255, 255, 0.03);
   }
-  .card-container:nth-of-type(4n + 0) {
-    border-color: $dk-blue;
 
-    span:first-of-type {
-      color: $lt-blue;
+  #iof-container {
+    .card-container:nth-of-type(4n + 0) {
+      border-color: $dk-blue;
+
+      span:first-of-type {
+        color: $lt-blue;
+      }
+    }
+    .card-container:nth-of-type(4n + 1) {
+      border-color: $dk-green;
+
+      span:first-of-type {
+        color: $lt-green;
+      }
+    }
+    .card-container:nth-of-type(4n + 2) {
+      border-color: $dk-purple;
+
+      span:first-of-type {
+        color: $lt-purple;
+      }
+    }
+    .card-container:nth-of-type(4n + 3) {
+      border-color: $dk-pink;
+
+      span:first-of-type {
+        color: $lt-pink;
+      }
     }
   }
-  .card-container:nth-of-type(4n + 1) {
-    border-color: $dk-green;
 
-    span:first-of-type {
-      color: $lt-green;
+  #opdw-container {
+    .card-container:first-of-type {
+      border-color: $dk-pink;
+
+      span:first-of-type {
+        color: $lt-pink;
+      }
     }
-  }
-  .card-container:nth-of-type(4n + 2) {
-    border-color: $dk-purple;
+    .card-container:last-of-type {
+      border-color: $dk-blue;
 
-    span:first-of-type {
-      color: $lt-purple;
-    }
-  }
-  .card-container:nth-of-type(4n + 3) {
-    border-color: $dk-pink;
-
-    span:first-of-type {
-      color: $lt-pink;
+      span:first-of-type {
+        color: $lt-blue;
+      }
     }
   }
 }

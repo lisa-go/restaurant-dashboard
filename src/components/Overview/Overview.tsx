@@ -1,4 +1,5 @@
 import IOFOverview from './IOFOverview';
+import OPDWOverview from './OPDWOverview';
 import './overview.scss';
 
 export interface OverviewData {
@@ -13,6 +14,7 @@ export default function Overview() {
       <div className='header'>Overview</div>
       <div className='content-container'>
         <IOFOverview />
+        <OPDWOverview />
       </div>
     </div>
   );

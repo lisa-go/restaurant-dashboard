@@ -2,14 +2,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import {
   LineChart,
-  Legend,
   Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  LabelList,
 } from 'recharts';
 import { DataPoint } from '../../redux/slices/statSlice';
 import { useEffect, useState } from 'react';
@@ -41,12 +39,10 @@ export default function OrdersPerDayWeek() {
         }}>
         <CartesianGrid strokeDasharray='3 3' />
         <XAxis
-          label='Day'
           dataKey='name'
           stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'}
         />
         <YAxis
-          label='Orders'
           domain={['dataMin - 25', 'dataMax + 25']}
           stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'}
         />
