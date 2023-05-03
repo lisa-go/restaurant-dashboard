@@ -9,10 +9,12 @@ export interface DataPoint {
 
 interface Stat {
   IOF: DataPoint[] | undefined;
+  OPDW: DataPoint[] | undefined;
 }
 
 const initialState: Stat = {
   IOF: undefined,
+  OPDW: undefined,
 };
 
 export const statSlice = createSlice({
@@ -22,9 +24,12 @@ export const statSlice = createSlice({
     updateIOF: (state, action: PayloadAction<DataPoint[]>) => {
       state.IOF = action.payload;
     },
+    updateOPDW: (state, action: PayloadAction<DataPoint[]>) => {
+      state.OPDW = action.payload;
+    },
   },
 });
 
-export const { updateIOF } = statSlice.actions;
+export const { updateIOF, updateOPDW } = statSlice.actions;
 
 export default statSlice.reducer;
