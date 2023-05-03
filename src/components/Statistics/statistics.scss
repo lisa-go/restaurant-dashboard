@@ -1,6 +1,13 @@
 @import '../../variables.scss';
 
 #statistics-container {
+  #graph-select {
+    position: fixed;
+    right: 2.5rem;
+    font-size: 1rem;
+    padding: 2px 10px;
+  }
+
   .content-container {
     .graph-container {
       width: 100%;
@@ -13,7 +20,15 @@
     }
 
     hr {
-      margin: 3rem 0;
+      margin: 1rem 0 3rem;
     }
   }
+}
+
+#light #statistics-container #graph-select {
+  background-color: $off-white;
+}
+
+#dark #statistics-container #graph-select {
+  background-color: $off-black;
 }
