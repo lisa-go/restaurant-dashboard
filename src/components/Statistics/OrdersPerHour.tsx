@@ -5,6 +5,7 @@ import {
   Line,
   XAxis,
   YAxis,
+  Text,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
@@ -39,7 +40,13 @@ export default function OrdersPerHour() {
         <XAxis
           dataKey='name'
           stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'}
+          label={{
+            value: 'Hour',
+            position: 'insideBottomRight',
+            offset: -13,
+          }}
         />
+
         <YAxis stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'} />
         <Tooltip />
         <Line

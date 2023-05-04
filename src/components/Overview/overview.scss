@@ -3,7 +3,8 @@
 #overview-container {
   .content-container {
     #iof-container,
-    #opdw-container {
+    #opdw-container,
+    #oph-container {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
@@ -37,12 +38,12 @@
 }
 
 #light #overview-container .content-container {
-  #iof-container .card-container,
-  #opdw-container .card-container {
+  .card-container {
     background-color: rgba(255, 255, 255, 0.2);
   }
 
-  #iof-container {
+  #iof-container,
+  #oph-container {
     .card-container:nth-of-type(4n + 0) {
       border-color: $lt-blue;
 
@@ -92,12 +93,12 @@
 }
 
 #dark #overview-container .content-container {
-  #iof-container .card-container,
-  #opdw-container .card-container {
+  .card-container {
     background-color: rgba(255, 255, 255, 0.03);
   }
 
-  #iof-container {
+  #iof-container,
+  #oph-container {
     .card-container:nth-of-type(4n + 0) {
       border-color: $dk-blue;
 

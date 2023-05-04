@@ -45,6 +45,7 @@ export default function OrdersPerDayWeek() {
         />
         <Tooltip />
         <Line
+          name='Orders'
           type='monotone'
           dataKey='value'
           stroke='#8884d8'

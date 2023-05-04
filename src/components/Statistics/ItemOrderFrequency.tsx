@@ -54,7 +54,9 @@ export default function ItemOrderFrequency() {
         />
         <Tooltip wrapperStyle={{ color: '#83746e' }} />
 
-        <Bar dataKey='value'>
+        <Bar
+          dataKey='value'
+          name='Plates Sold'>
           {data &&
             data.map((entry, index) => (
               <Cell
