@@ -8,19 +8,20 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from 'recharts';
-import { DataPoint } from '../../redux/slices/statSlice';
+import { DataTwoPoint } from '../../redux/slices/statSlice';
 import { useEffect, useState } from 'react';
 
-export default function OrdersPerDayWeek() {
+export default function OrdersPerHour() {
   const viewMode = useSelector((state: RootState) => state.viewMode.mode);
-  const OPDWdata = useSelector((state: RootState) => state.stat.OPDW);
+  const OPHdata = useSelector((state: RootState) => state.stat.OPH);
 
-  const [data, setData] = useState<DataPoint[]>();
+  const [data, setData] = useState<DataTwoPoint[]>();
 
   useEffect(() => {
-    setData(OPDWdata);
-  }, [OPDWdata]);
+    setData(OPHdata);
+  }, [OPHdata]);
 
   return (
     <ResponsiveContainer
@@ -39,16 +40,21 @@ export default function OrdersPerDayWeek() {
           dataKey='name'
           stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'}
         />
-        <YAxis
-          domain={['dataMin - 25', 'dataMax + 25']}
-          stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'}
-        />
+        <YAxis stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'} />
         <Tooltip />
         <Line
+          name='Amount of Orders'
           type='monotone'
-          dataKey='value'
+          dataKey='value1'
           stroke='#8884d8'
         />
+        <Line
+          name='Items ordered'
+          type='monotone'
+          dataKey='value2'
+          stroke='#82ca9d'
+        />
+        <Legend />
       </LineChart>
     </ResponsiveContainer>
   );

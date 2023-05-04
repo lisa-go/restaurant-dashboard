@@ -2,14 +2,17 @@ import './statistics.scss';
 import ItemOrderFrequency from './ItemOrderFrequency';
 import { useRef } from 'react';
 import OrdersPerDayWeek from './OrdersPerDayWeek';
+import OrdersPerHour from './OrdersPerHour';
 
 export default function Statistics() {
   const IOFref = useRef<null | HTMLDivElement>(null);
   const OPDWref = useRef<null | HTMLDivElement>(null);
+  const OPHref = useRef<null | HTMLDivElement>(null);
 
   const graphs = [
     { ref: IOFref, name: 'Item Order Frequency' },
     { ref: OPDWref, name: 'Orders Per Day in a Week' },
+    { ref: OPHref, name: 'Orders & Items Ordered Per Hour' },
   ];
 
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -43,6 +46,11 @@ export default function Statistics() {
         <div className='graph-container'>
           <h1 ref={OPDWref}>{graphs[1].name}</h1>
           <OrdersPerDayWeek />
+        </div>
+        <hr />
+        <div className='graph-container'>
+          <h1 ref={OPHref}>{graphs[2].name}</h1>
+          <OrdersPerHour />
         </div>
       </div>
     </div>
