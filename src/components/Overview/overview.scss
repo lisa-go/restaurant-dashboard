@@ -1,37 +1,36 @@
 @import '../../variables.scss';
 
-#overview-container {
-  .content-container {
-    #iof-container,
-    #opdw-container,
-    #oph-container {
+#overview-container .content-container {
+  #iof-container,
+  #opdw-container,
+  #oph-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .card-container {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1rem;
+      flex-direction: column;
+      text-align: end;
+      justify-content: space-between;
+      padding: 10px;
+      width: 160px;
+      max-width: 45%;
+      aspect-ratio: 1/ 1;
+      border-left: 5px solid transparent;
+      border-top: 2px solid transparent;
+      border-radius: 6px;
+      box-shadow: 4px 5px 6px rgba(0, 0, 0, 0.5);
 
-      .card-container {
-        display: flex;
-        flex-direction: column;
-        text-align: end;
-        justify-content: space-between;
-        padding: 10px;
-        width: 160px;
-        max-width: 45%;
-        aspect-ratio: 1/ 1;
-        border-left: 5px solid transparent;
-        border-top: 2px solid transparent;
-        border-radius: 6px;
-        box-shadow: 4px 5px 6px rgba(0, 0, 0, 0.5);
+      span:first-of-type {
+        text-align: start;
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
 
-        span:first-of-type {
-          text-align: start;
-          font-size: 1.1rem;
-          font-weight: bold;
-        }
-        span:nth-of-type(2) {
-          font-size: 1.25rem;
-        }
+      span:nth-of-type(2) {
+        font-size: 1.25rem;
       }
     }
   }
@@ -51,6 +50,7 @@
         color: $dk-blue;
       }
     }
+
     .card-container:nth-of-type(4n + 1) {
       border-color: $lt-green;
 
@@ -58,6 +58,7 @@
         color: $dk-green;
       }
     }
+
     .card-container:nth-of-type(4n + 2) {
       border-color: $lt-pink;
 
@@ -65,6 +66,7 @@
         color: $dk-pink;
       }
     }
+
     .card-container:nth-of-type(4n + 3) {
       border-color: $lt-purple;
 
@@ -82,6 +84,7 @@
         color: $dk-purple;
       }
     }
+
     .card-container:last-of-type {
       border-color: $lt-blue;
 
@@ -106,6 +109,7 @@
         color: $lt-blue;
       }
     }
+
     .card-container:nth-of-type(4n + 1) {
       border-color: $dk-green;
 
@@ -113,6 +117,7 @@
         color: $lt-green;
       }
     }
+
     .card-container:nth-of-type(4n + 2) {
       border-color: $dk-purple;
 
@@ -120,6 +125,7 @@
         color: $lt-purple;
       }
     }
+
     .card-container:nth-of-type(4n + 3) {
       border-color: $dk-pink;
 
@@ -137,6 +143,7 @@
         color: $lt-pink;
       }
     }
+
     .card-container:last-of-type {
       border-color: $dk-blue;
 

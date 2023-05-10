@@ -47,8 +47,11 @@ export default function Content() {
   }, [transactionData, foodData, drinkData]);
 
   useEffect(() => {
-    const interval = setInterval(() => refetch(), 150000);
-    return () => clearInterval(interval);
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => refetch(), 150000);
+      return () => clearInterval(interval);
+    }, 0);
+    return () => clearTimeout(timeout);
   }, []);
 
   /* data statistics */
@@ -70,10 +73,10 @@ export default function Content() {
             (element) => element.name === item.name
           )[0];
           tempItem.value += item.qty;
-          list.sort((a, b) => {
-            return a.value - b.value;
-          });
         });
+      });
+      list.sort((a, b) => {
+        return a.value - b.value;
       });
       dispatch(updateIOF(list));
     }
@@ -161,11 +164,6 @@ export default function Content() {
       dispatch(updateOPH(hours));
     }
   }, [tData]);
-
-  /* temporary console log */
-  useEffect(() => {
-    console.log(transactionData);
-  }, [transactionData]);
 
   return (
     <main>

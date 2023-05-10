@@ -42,12 +42,12 @@ export default function Statistics() {
           <h1 ref={IOFref}>{graphs[0].name}</h1>
           <ItemOrderFrequency />
         </div>
-        <hr />
+
         <div className='graph-container'>
           <h1 ref={OPDWref}>{graphs[1].name}</h1>
           <OrdersPerDayWeek />
         </div>
-        <hr />
+
         <div className='graph-container'>
           <h1 ref={OPHref}>{graphs[2].name}</h1>
           <OrdersPerHour />

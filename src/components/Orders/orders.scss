@@ -13,7 +13,7 @@
       margin: 0 5px;
       box-shadow: 4px 5px 6px rgba(0, 0, 0, 0.5);
       height: 8%;
-      transition: height 2000ms ease-in;
+      transition: height 2000ms ease-in-out;
 
       &:hover {
         height: 150%;
@@ -37,7 +37,7 @@
       .additional {
         visibility: hidden;
         opacity: 0;
-        transition: 1500ms ease-in;
+        transition: 1500ms ease-in-out;
         display: flex;
         flex-direction: column;
         gap: 6px;
@@ -90,26 +90,22 @@
   }
 }
 
-#light {
-  #orders-container {
-    .content-container .card {
-      border: 1px dotted $off-black;
-    }
+#light #orders-container {
+  .content-container .card {
+    border: 1px dotted $off-black;
+  }
 
-    .page-navigation button {
-      border: 1px solid rgba(0, 0, 0, 0.4);
-    }
+  .page-navigation button {
+    border: 1px solid rgba(0, 0, 0, 0.4);
   }
 }
 
-#dark {
-  #orders-container {
-    .content-container .card {
-      border: 1px dotted $off-white;
-    }
-    .page-navigation button {
-      border: 1px solid rgba(255, 255, 255, 0.4);
-    }
+#dark #orders-container {
+  .content-container .card {
+    border: 1px dotted $off-white;
+  }
+  .page-navigation button {
+    border: 1px solid rgba(255, 255, 255, 0.4);
   }
 }
 

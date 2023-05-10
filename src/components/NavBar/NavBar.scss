@@ -24,10 +24,11 @@ header {
     border-left: 10px solid transparent;
 
     &:hover {
+      transition: 1500ms;
+
       span {
         font-weight: bold;
       }
-      transition: 1500ms;
     }
 
     span {
@@ -43,9 +44,11 @@ header {
       background: none;
       border-left: 10px solid transparent;
     }
+
     img {
       width: 50px;
     }
+
     span {
       font-size: 1.45rem;
       font-weight: bold;
@@ -68,14 +71,12 @@ header {
   }
 }
 
-#light header {
-  button {
-    svg {
-      color: $off-black;
-    }
-    span {
-      color: $off-black;
-    }
+#light header button {
+  svg {
+    color: $off-black;
+  }
+  span {
+    color: $off-black;
   }
 
   #tab-container button:hover {
@@ -146,15 +147,11 @@ header {
     }
   }
 
-  #light header {
-    #tab-container button:hover {
-      border-top-color: $off-black;
-    }
+  #light header #tab-container button:hover {
+    border-top-color: $off-black;
   }
 
-  #dark header {
-    #tab-container button:hover {
-      border-top-color: $off-white;
-    }
+  #dark header #tab-container button:hover {
+    border-top-color: $off-white;
   }
 }

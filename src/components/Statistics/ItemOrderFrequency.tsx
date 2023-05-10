@@ -31,7 +31,7 @@ export default function ItemOrderFrequency() {
   return (
     <ResponsiveContainer
       width='100%'
-      height='90%'>
+      height='95%'>
       <BarChart
         layout='vertical'
         data={data}
@@ -56,7 +56,7 @@ export default function ItemOrderFrequency() {
 
         <Bar
           dataKey='value'
-          name='Plates Sold'>
+          name='Amount Sold'>
           {data &&
             data.map((entry, index) => (
               <Cell

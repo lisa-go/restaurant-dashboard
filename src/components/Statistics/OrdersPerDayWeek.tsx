@@ -25,7 +25,7 @@ export default function OrdersPerDayWeek() {
   return (
     <ResponsiveContainer
       width='100%'
-      height='90%'>
+      height='95%'>
       <LineChart
         data={data}
         margin={{
@@ -43,7 +43,7 @@ export default function OrdersPerDayWeek() {
           domain={['dataMin - 25', 'dataMax + 25']}
           stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'}
         />
-        <Tooltip />
+        <Tooltip wrapperStyle={{ color: '#83746e' }} />
         <Line
           name='Orders'
           type='monotone'

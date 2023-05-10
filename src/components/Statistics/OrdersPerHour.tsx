@@ -5,7 +5,6 @@ import {
   Line,
   XAxis,
   YAxis,
-  Text,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
@@ -27,7 +26,7 @@ export default function OrdersPerHour() {
   return (
     <ResponsiveContainer
       width='100%'
-      height='90%'>
+      height='95%'>
       <LineChart
         data={data}
         margin={{
@@ -39,6 +38,7 @@ export default function OrdersPerHour() {
         <CartesianGrid strokeDasharray='3 3' />
         <XAxis
           dataKey='name'
+          unit={':00'}
           stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'}
           label={{
             value: 'Hour',
@@ -48,7 +48,7 @@ export default function OrdersPerHour() {
         />
 
         <YAxis stroke={viewMode === 'light' ? '#1f232c' : '#f5f5f5'} />
-        <Tooltip />
+        <Tooltip wrapperStyle={{ color: '#83746e' }} />
         <Line
           name='Amount of Orders'
           type='monotone'

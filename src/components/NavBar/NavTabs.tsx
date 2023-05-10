@@ -8,7 +8,6 @@ import { reset } from '../../redux/slices/pageNumberSlice';
 
 export default function NavTabs() {
   const defaultSize = 30;
-
   const dispatch = useDispatch();
 
   const handleButton = (page: string) => {
