@@ -52,6 +52,8 @@
         .pr-container span:last-of-type {
           display: flex;
           gap: 1px;
+          width: 50px;
+          justify-content: end;
         }
 
         > p {
