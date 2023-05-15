@@ -47,12 +47,11 @@ export default function Content() {
   }, [transactionData, foodData, drinkData]);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    if (transactionData) {
       const interval = setInterval(() => refetch(), 150000);
       return () => clearInterval(interval);
-    }, 0);
-    return () => clearTimeout(timeout);
-  }, []);
+    }
+  }, [transactionData]);
 
   /* data statistics */
   const { tData, fData, dData } = useSelector((state: RootState) => state.data);
