@@ -34,6 +34,9 @@ export default function Content() {
   const { data: foodData } = useGetMenuFoodsQuery();
   const { data: drinkData } = useGetMenuDrinksQuery();
 
+  // refresh interval (milliseconds)
+  const REFRESH_INTERVAL = 5 * 60 * 1000; // 300000 ms (5 minutes)
+
   useEffect(() => {
     if (transactionData && transactionData !== data.tData) {
       dispatch(updateTransactions(transactionData));
@@ -48,7 +51,7 @@ export default function Content() {
 
   useEffect(() => {
     if (transactionData) {
-      const interval = setInterval(() => refetch(), 150000);
+      const interval = setInterval(() => refetch(), REFRESH_INTERVAL);
       return () => clearInterval(interval);
     }
   }, [transactionData]);
@@ -59,21 +62,36 @@ export default function Content() {
   /* populate IOF data with all items */
   useEffect(() => {
     if (tData) {
-      let list: DataPoint[] = [];
-      if (dData && fData) {
-        dData.concat(fData).forEach((item) => {
-          list.push({ name: item.name, value: 0 });
-        });
-      }
+      // Build a starting list from whatever menu data is available (drinks and/or foods)
+      const list: DataPoint[] = [];
+      const seen = new Set<string>();
 
+      (dData || []).forEach((item) => {
+        if (!seen.has(item.name)) {
+          seen.add(item.name);
+          list.push({ name: item.name, value: 0 });
+        }
+      });
+      (fData || []).forEach((item) => {
+        if (!seen.has(item.name)) {
+          seen.add(item.name);
+          list.push({ name: item.name, value: 0 });
+        }
+      });
+
+      // Tally quantities from transactions. If an item isn't present in the menu
+      // data, create an entry on the fly so we never try to access .value of undefined.
       tData.forEach((trans) => {
         trans.order.forEach((item) => {
-          let tempItem = list.filter(
-            (element) => element.name === item.name
-          )[0];
+          let tempItem = list.find((element) => element.name === item.name);
+          if (!tempItem) {
+            tempItem = { name: item.name, value: 0 };
+            list.push(tempItem);
+          }
           tempItem.value += item.qty;
         });
       });
+
       list.sort((a, b) => {
         return a.value - b.value;
       });

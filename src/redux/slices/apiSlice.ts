@@ -48,7 +48,7 @@ export type DrinkResponse = Drink[];
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://puce-beautiful-beaver.cyclic.app/restaurant/',
+    baseUrl: 'https://restaurantbackend-9o91.onrender.com/restaurant/',
   }),
   tagTypes: ['Transactions', 'Menu/foods', 'Menu/drinks'],
   endpoints: (build) => ({
