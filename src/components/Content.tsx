@@ -30,12 +30,24 @@ export default function Content() {
   /* fetch data and update data state when data changes */
   const dispatch = useDispatch();
   const data = useSelector((state: RootState) => state.data);
-  const { data: transactionData, refetch } = useGetTransactionsQuery();
-  const { data: foodData } = useGetMenuFoodsQuery();
-  const { data: drinkData } = useGetMenuDrinksQuery();
+  const {
+    data: transactionData,
+    refetch: refetchTransactions,
+    isError: txIsError,
+  } = useGetTransactionsQuery(undefined, { pollingInterval: 60 * 1000 }); // poll every 1 minute
+  const {
+    data: foodData,
+    refetch: refetchFoods,
+    isError: foodsIsError,
+  } = useGetMenuFoodsQuery();
+  const {
+    data: drinkData,
+    refetch: refetchDrinks,
+    isError: drinksIsError,
+  } = useGetMenuDrinksQuery();
 
-  // refresh interval (milliseconds)
-  const REFRESH_INTERVAL = 5 * 60 * 1000; // 300000 ms (5 minutes)
+  // retry interval for failed requests (milliseconds)
+  const RETRY_INTERVAL = 30 * 1000; // 30 seconds
 
   useEffect(() => {
     if (transactionData && transactionData !== data.tData) {
@@ -49,12 +61,29 @@ export default function Content() {
     }
   }, [transactionData, foodData, drinkData]);
 
+  // transactions are polled by RTK Query (see pollingInterval option above)
+
+  // Retry-on-error: attempt to refetch periodically while a query is errored and has no data
   useEffect(() => {
-    if (transactionData) {
-      const interval = setInterval(() => refetch(), REFRESH_INTERVAL);
-      return () => clearInterval(interval);
+    if (txIsError && !transactionData) {
+      const retry = setInterval(() => refetchTransactions(), RETRY_INTERVAL);
+      return () => clearInterval(retry);
     }
-  }, [transactionData]);
+  }, [txIsError, transactionData, refetchTransactions]);
+
+  useEffect(() => {
+    if (foodsIsError && !foodData) {
+      const retry = setInterval(() => refetchFoods(), RETRY_INTERVAL);
+      return () => clearInterval(retry);
+    }
+  }, [foodsIsError, foodData, refetchFoods]);
+
+  useEffect(() => {
+    if (drinksIsError && !drinkData) {
+      const retry = setInterval(() => refetchDrinks(), RETRY_INTERVAL);
+      return () => clearInterval(retry);
+    }
+  }, [drinksIsError, drinkData, refetchDrinks]);
 
   /* data statistics */
   const { tData, fData, dData } = useSelector((state: RootState) => state.data);
